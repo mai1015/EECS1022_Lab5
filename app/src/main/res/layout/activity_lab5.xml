@@ -48,7 +48,8 @@
         android:layout_below="@+id/inputNewName"
         android:layout_toRightOf="@+id/labelBalance"
         android:layout_alignRight="@+id/inputNewName"
-        android:layout_alignEnd="@+id/inputNewName"/>
+        android:layout_alignEnd="@+id/inputNewName"
+        android:inputType="number|numberDecimal"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -59,7 +60,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        android:onClick="onCreateClient"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -95,7 +97,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/inputFrom"
         android:layout_alignTop="@+id/labelFrom"
         android:layout_toRightOf="@+id/labelFrom"
         android:layout_alignRight="@+id/buttonCreate"
@@ -151,7 +153,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/inputAmount"
         android:layout_alignEnd="@+id/inputAmount"
-        android:onClick="doAction"/>
+        android:onClick="onAction"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -182,7 +184,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/inputName"
         android:layout_alignEnd="@+id/inputName"
-        android:onClick="doAction"/>
+        android:onClick="onCheckTransacion"/>
 
     <TextView
         android:layout_width="wrap_content"
