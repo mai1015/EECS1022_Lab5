@@ -34,10 +34,10 @@ public class BankTester {
             e.printStackTrace();
         }
         System.out.println(a);
-        a.withdarw(100);
+        a.withdraw(100);
         System.out.println(a);
         try {
-            a.withdarw(-100);
+            a.withdraw(-100);
         } catch (Error e) {
             e.printStackTrace();
         }

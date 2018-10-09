@@ -56,7 +56,7 @@ public class Bank {
 //    }
 //
 //    public boolean withdraw(Client from, float amount) {
-//        return from.withdarw(amount);
+//        return from.withdraw(amount);
 //    }
 
     public boolean transfer(Client from, Client to, float amount) {
