@@ -35,14 +35,13 @@ public class Client {
     }
 
     public boolean withdarw(float amount, String comment) {
-        if (amount <= 0) throw new Error("Non-Positive Amount"); // TODO: ERROR
+        if (amount <= 0) throw new Error("Non-Positive Amount");
         if (this.amount < amount) throw new Error("Amount too large to withdraw.");
 
         this.amount -= amount;
 
         //history
-        history[noc] = new Transaction(Transaction.Action.Withdraw, amount, comment);
-        noc++;
+        addTrans(Transaction.Action.Withdraw, amount, comment);
         return true;
     }
 
@@ -55,8 +54,7 @@ public class Client {
 
         this.amount += amount;
         // history
-        history[noc] = new Transaction(Transaction.Action.Deposit, amount, comment);
-        noc++;
+        addTrans(Transaction.Action.Deposit, amount, comment);
     }
 
     public Transaction[] getTransactions() {
@@ -82,5 +80,16 @@ public class Client {
         if (obj instanceof Client)
             return name == ((Client)obj).name;
         return false;
+    }
+
+    public boolean addTrans(Transaction.Action action, float amount) {
+        return addTrans(action, amount, null);
+    }
+
+    public boolean addTrans(Transaction.Action action, float amount, String msg) {
+        if (noc >= MAX_TRANSACTION) return false;
+
+        history[noc++] = new Transaction(action, amount, msg);
+        return true;
     }
 }

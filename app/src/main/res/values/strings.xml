@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lab5</string>
+    <string name="app_name">EECS1022 W18 Lab 5 : Extended Bank Application</string>
     <string-array name="service">
         <item>deposit</item>
         <item>withdraw</item>

@@ -66,10 +66,9 @@ public class Lab5Activity extends AppCompatActivity
         String name = getInputById(R.id.inputName);
 
         Client c = b.getClient(name);
-        if (c == null) {
+        if (c == null)
             setTextViewById(R.id.lableResult, String.format("Error: Client %s does not exist.", name));
-        }
-        setTextViewById(R.id.lableResult, String.format("Statement of client %s (current balance $%.2f):\n%s", name, c.getAmount(), c.printHistory()));
-
+        else
+            setTextViewById(R.id.lableResult, String.format("Statement of client %s (current balance $%.2f):\n%s", name, c.getAmount(), c.printHistory()));
     }
 }

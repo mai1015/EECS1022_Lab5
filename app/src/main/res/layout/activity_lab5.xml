@@ -42,14 +42,14 @@
         android:textAlignment="center"/>
 
     <EditText
+        android:id="@+id/inputNewBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/inputNewBalance"
+        android:layout_alignEnd="@+id/inputNewName"
+        android:layout_alignRight="@+id/inputNewName"
         android:layout_below="@+id/inputNewName"
         android:layout_toRightOf="@+id/labelBalance"
-        android:layout_alignRight="@+id/inputNewName"
-        android:layout_alignEnd="@+id/inputNewName"
-        android:inputType="number|numberDecimal"/>
+        android:inputType="number|numberSigned|numberDecimal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -134,14 +134,14 @@
         android:textSize="25sp"/>
 
     <EditText
+        android:id="@+id/inputAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/inputAmount"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/labelAmount"
         android:layout_toRightOf="@+id/labelAmount"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:inputType="number|numberDecimal"/>
+        android:inputType="number|numberSigned|numberDecimal" />
 
     <Button
         android:layout_width="wrap_content"
