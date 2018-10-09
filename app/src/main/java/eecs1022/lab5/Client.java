@@ -30,11 +30,11 @@ public class Client {
         return amount;
     }
 
-    public boolean withdarw(float amount) {
-        return withdarw(amount, null);
+    public boolean withdraw(float amount) {
+        return withdraw(amount, null);
     }
 
-    public boolean withdarw(float amount, String comment) {
+    public boolean withdraw(float amount, String comment) {
         if (amount <= 0) throw new Error("Non-Positive Amount");
         if (this.amount < amount) throw new Error("Amount too large to withdraw.");
 

@@ -42,7 +42,7 @@ public class Bank {
                 return true;
             case "withdraw":
                 if (f == null) throw new Error(String.format("Error: From-Client %s does not exist.", from));
-                return f.withdarw(amount);
+                return f.withdraw(amount);
             case "transfer":
                 if (f == null) throw new Error(String.format("Error: From-Client %s does not exist.", from));
                 if (t == null) throw new Error(String.format("Error: To-Client %s does not exist.", to));
@@ -65,7 +65,7 @@ public class Bank {
         if (amount <= 0) throw new Error("Non-Positive Amount"); // TODO: ERROR
         if (from.getAmount() < amount) throw new Error("Amount too large to transfer.");
 
-        if (from.withdarw(amount, String.format("Transfer to %s", to.getName()))) {
+        if (from.withdraw(amount, String.format("Transfer to %s", to.getName()))) {
             to.deposit(amount, String.format("Transfer from %s", from.getName()));
             return true;
         }
