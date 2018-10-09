@@ -14,12 +14,19 @@ public class Bank {
         clients = new Client[MAX_CLIENT];
     }
 
-    public Client getClient(String name) {
+    public Client getClient(String name, boolean error) {
         for (int i = 0; i < noc; i++) {
             if (clients[i].getName().equals(name))
                 return clients[i];
         }
+        if (error) {
+            throw new Error(String.format("Error: Client %s does not exist.", name));
+        }
         return null;
+    }
+
+    public Client getClient(String name) {
+        return getClient(name, false);
     }
 
     public void addClient(Client c) {

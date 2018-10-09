@@ -2,6 +2,7 @@ package eecs1022.lab5;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.system.ErrnoException;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -31,6 +32,12 @@ public class Lab5Activity extends AppCompatActivity
         return view.getText().toString();
     }
 
+    private float getFloatByInputId(int ID)
+    {
+        String str = getInputById(ID);
+        return str.isEmpty() ? 0.0f : Float.parseFloat(str);
+    }
+
     private String getItemSelectedById(int ID) {
         Spinner spinner = (Spinner) findViewById(ID);
         return spinner.getSelectedItem().toString();
@@ -38,7 +45,7 @@ public class Lab5Activity extends AppCompatActivity
 
     public void onCreateClient(View view) {
         String name = getInputById(R.id.inputNewName);
-        float bal = Float.parseFloat(getInputById(R.id.inputNewBalance));
+        float bal = getFloatByInputId(R.id.inputNewBalance);
         Client c = new Client(name, bal);
         try {
             b.addClient(c);
@@ -52,7 +59,7 @@ public class Lab5Activity extends AppCompatActivity
         String act = getItemSelectedById(R.id.spinnerService);
         String from = getInputById(R.id.inputFrom);
         String to = getInputById(R.id.inputTo);
-        float amount = Float.parseFloat(getInputById(R.id.inputAmount));
+        float amount = getFloatByInputId(R.id.inputAmount);
 
         try {
             b.doAction(act, from, to, amount);
@@ -65,10 +72,11 @@ public class Lab5Activity extends AppCompatActivity
     public void onCheckTransacion(View view) {
         String name = getInputById(R.id.inputName);
 
-        Client c = b.getClient(name);
-        if (c == null)
-            setTextViewById(R.id.lableResult, String.format("Error: Client %s does not exist.", name));
-        else
+        try {
+            Client c = b.getClient(name, true);
             setTextViewById(R.id.lableResult, String.format("Statement of client %s (current balance $%.2f):\n%s", name, c.getAmount(), c.printHistory()));
+        } catch (Error e) {
+            setTextViewById(R.id.lableResult, e.getMessage());
+        }
     }
 }
